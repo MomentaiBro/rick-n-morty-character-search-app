@@ -56,7 +56,7 @@ function App() {
           />
       </div>
       <div className='container'>
-        <div className='movie'>
+        <div className='character'>
           <div>
             <p>{characterData1.name}</p>
           </div>
