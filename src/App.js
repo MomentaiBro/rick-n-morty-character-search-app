@@ -5,15 +5,15 @@ const API_URL = "https://rickandmortyapi.com/api";
 
 function App() {
 
-  const searchRickNMorty = async (name) => {
+  const searchRickNMorty = async(name) => {
     const response = await fetch(`${API_URL}/character/?=${name}`);
 
     const data = await response.json();
-    console.log(data);
+    console.log(data.results);
   }
   
   useEffect(() => {
-    searchRickNMorty("Rick");
+    searchRickNMorty("Summer");
   }, []);
 
   return (
