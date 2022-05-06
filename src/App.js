@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
+import searchIcon from './search.svg'
 
 const API_URL = "https://rickandmortyapi.com/api";
 
@@ -18,7 +19,22 @@ function App() {
 
   return (
     <div className="App">
-     Hello 
+      <h1>Who The Heck R U ?</h1>
+      <div className='search-bar'>
+        <input
+          placeholder='Looking for someone?'
+          value="Summer"
+          onChange={() =>{}}
+          />
+          <img 
+            src={searchIcon}
+            alt="search icon"
+            onClick={()=>{}}
+          />
+      </div>
+      <div className='container'>
+
+      </div> 
     </div>
   );
 }
