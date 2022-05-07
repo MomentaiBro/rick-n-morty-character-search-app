@@ -48,7 +48,11 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Who The Heck R U ?</h1>
+      <h1>
+        Find a Character
+        <br />
+         From Ricky and Morty
+        </h1>
       <div className='search-bar'>
         <input
           placeholder='Looking for someone?'
