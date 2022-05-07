@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import searchIcon from './search.svg'
+import CharacterCard from './CharacterCard';
+
 
 const API_URL = "https://rickandmortyapi.com/api";
 
@@ -29,11 +31,14 @@ const characterData1 = {
 
 function App() {
 
+  const [characters, setCharacters] = useState([]);
+
   const searchRickNMorty = async(name) => {
     const response = await fetch(`${API_URL}/character/?name=${name}`);
 
     const data = await response.json();
-    console.log(data.results);
+
+    setCharacters(data.results);
   }
   
   useEffect(() => {
@@ -55,23 +60,24 @@ function App() {
             onClick={()=>{}}
           />
       </div>
-      <div className='container'>
-        <div className='character'>
-          <div>
-            <p>{characterData1.name}</p>
+      
+      {
+        characters?.length > 0
+        ? (
+          <div className='container'>
+            { characters.map((character) => (
+              <CharacterCard character={character} />
+            ))}
+            
+          </div> 
+        ) : (
+          <div className='empty'>
+            <h2>No Characters Found :( </h2>
           </div>
-          <div>
-            <img 
-              src={characterData1.image !== 'N/A' ? characterData1.image : 'https://via.placeholder.com/404'}
-              alt={characterData1.name}
-            />
-          </div>
-          <div>
-            <span>{characterData1.name}</span>
-            <h3>{characterData1.name}</h3>
-          </div>
-        </div>
-      </div> 
+        )
+      }
+
+      
     </div>
   );
 }
