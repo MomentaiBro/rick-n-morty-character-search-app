@@ -32,6 +32,7 @@ const characterData1 = {
 function App() {
 
   const [characters, setCharacters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const searchRickNMorty = async(name) => {
     const response = await fetch(`${API_URL}/character/?name=${name}`);
@@ -51,33 +52,29 @@ function App() {
       <div className='search-bar'>
         <input
           placeholder='Looking for someone?'
-          value="Summer"
-          onChange={() =>{}}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           />
           <img 
             src={searchIcon}
             alt="search icon"
-            onClick={()=>{}}
+            onClick={() => searchRickNMorty(searchTerm)}
           />
       </div>
-      
       {
         characters?.length > 0
         ? (
-          <div className='container'>
-            { characters.map((character) => (
-              <CharacterCard character={character} />
-            ))}
-            
-          </div> 
-        ) : (
-          <div className='empty'>
-            <h2>No Characters Found :( </h2>
-          </div>
-        )
-      }
-
-      
+            <div className='container'>
+              { characters.map((character) => (
+                <CharacterCard character={character} />
+              ))}
+            </div> 
+          ) : (
+            <div className='empty'>
+              <h2>No Characters Found :( </h2>
+            </div>
+          )
+        }
     </div>
   );
 }

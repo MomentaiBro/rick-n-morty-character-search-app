@@ -13,7 +13,7 @@ const CharacterCard = ({character}) => {
                  />
             </div>
             <div>
-                <span>{character.name}</span>
+                <span>{character.species} | {character.location.name}</span>
                 <h3>{character.name}</h3>
              </div>
       </div>
